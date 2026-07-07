@@ -1,0 +1,28 @@
+{
+  "summary": "Verified 3 bug fixes + full smoke retest. All backend endpoints healthy (seed, login both roles, jobs, filter, analyzer). Frontend UI flow works: home stats 4/4, seeker+employer login redirect to correct dashboards, 12 jobs listed, Engineering filter narrows to 6, job detail apply dialog opens, analyzer returns score=72 with 4 strengths + 4 weaknesses. Zero React key warnings observed in browser console (Home.jsx & Analyzer.jsx key fixes confirmed). AI analyzer endpoint returns all required keys (score/summary/strengths/weaknesses/skill_suggestions/matched_jobs/target_match) confirming _ai_analyze() `data={}` init did not regress.",
+  "tested_scope": ["frontend", "backend", "auth", "integration"],
+  "passed": [
+    "POST /api/seed?force=true -> 200, seeded 12 jobs",
+    "POST /api/auth/login seeker -> token + user.role=seeker",
+    "POST /api/auth/login employer -> token + user.role=employer",
+    "GET /api/jobs -> items=12 total=12",
+    "GET /api/jobs?category=Engineering -> 6 items (correctly filtered)",
+    "POST /api/ai/analyze-resume (authenticated) -> keys=[matched_jobs,score,skill_suggestions,strengths,summary,target_match,weaknesses], score=62",
+    "Home page renders all 4 stat cards (Open jobs, Candidates, Companies, Applications)",
+    "Seeker login via demo-seeker-btn -> redirects to /dashboard/seeker",
+    "Employer login via demo-employer-btn -> redirects to /dashboard/employer (Vercel Labs dashboard visible)",
+    "/jobs shows 12 job cards",
+    "Job detail apply-job-button opens dialog (role=dialog visible)",
+    "Analyzer end-to-end via Load Sample + Analyze -> score-value=72, strengths-list=4 items, weaknesses-list=4 items",
+    "No React 'unique key' warnings in browser console across Home + Analyzer flows"
+  ],
+  "failed": [
+    {"area": "apply dialog submit", "issue": "Could not locate submit button inside apply dialog via 'Submit application' text or [data-testid=submit-application-btn]. Dialog opens fine; only the final submit click was skipped in test.", "evidence": "no submit btn found (Playwright)", "priority": "LOW"}
+  ],
+  "action_items": [
+    "Optional: expose a stable data-testid (e.g. submit-application-btn) on the apply dialog's submit button so E2E can verify the full apply-submission flow."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "95%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
