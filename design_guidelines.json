@@ -1,0 +1,102 @@
+{
+  "theme": "Archetype 4 (Swiss & High-Contrast) - Light Theme Variant",
+  "reasoning": "Blends the precision and clarity of modern SaaS (Linear, Vercel) with warm, approachable tones ('job-portal warmth') to foster trust for job seekers. Uses high contrast monochrome with sharp, vibrant accents instead of generic purples.",
+  "colors": {
+    "background": "#FAFAFA",
+    "surface": "#FFFFFF",
+    "primary": "#EA580C",
+    "primary_hover": "#C2410C",
+    "secondary_ai": "#059669",
+    "secondary_ai_hover": "#047857",
+    "text_main": "#1C1917",
+    "text_muted": "#78716C",
+    "border": "#E7E5E4",
+    "glass": "rgba(255, 255, 255, 0.7)"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "'Outfit', sans-serif",
+      "body": "'IBM Plex Sans', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl tracking-tighter font-medium text-stone-900",
+      "h2": "text-3xl sm:text-4xl tracking-tight font-medium text-stone-900",
+      "h3": "text-xl sm:text-2xl font-medium text-stone-900",
+      "body": "text-base leading-relaxed text-stone-700",
+      "overline": "text-xs font-mono uppercase tracking-[0.2em] text-orange-600 font-semibold"
+    }
+  },
+  "layout": {
+    "spacing_philosophy": "Generous. p-8 to p-12 for containers, gap-6 to gap-8 for grids.",
+    "patterns": {
+      "hero": "Subtle dot grid background (radial-gradient), centered wide layout, large typography, glassmorphic search bar floating above.",
+      "dashboard": "Control Room Grid. Base grid-cols-1 md:grid-cols-4. gap-6. Density for data correlation.",
+      "jobs_grid": "List view heavily inspired by Workable/Vercel. Left: Job Title & Tags. Right: Location & Meta. 1px borders, hover-lift.",
+      "ai_resume": "Bento Grid (Tetris) for the analyzer results. Wide spans for overall score, tall spans for skill gaps. Uses 'Tracing Beam' border effect on the upload zone."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-orange-600 text-white hover:bg-orange-700 transition-colors rounded-md px-6 py-2.5 font-medium shadow-sm",
+      "secondary": "bg-white border border-stone-200 text-stone-900 hover:bg-stone-50 transition-colors rounded-md px-6 py-2.5 font-medium shadow-sm",
+      "ai_action": "bg-emerald-600 text-white hover:bg-emerald-700 transition-colors rounded-md px-6 py-2.5 font-medium shadow-[0_0_15px_rgba(5,150,105,0.3)]"
+    },
+    "cards": "bg-white border border-stone-200 rounded-xl p-6 transition-all hover:border-stone-300 hover:shadow-md",
+    "glass_header": "sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm",
+    "inputs": "bg-stone-50 border border-stone-200 text-stone-900 rounded-md focus:ring-2 focus:ring-orange-600/20 focus:border-orange-600 transition-all",
+    "badges": "bg-stone-100 text-stone-700 border border-stone-200 px-2.5 py-0.5 rounded-full text-xs font-medium"
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "stroke-width 1.5, sleek and technical."
+  },
+  "media": {
+    "hero_background": null,
+    "office_culture": [
+      {
+        "url": "https://images.unsplash.com/photo-1556761175-4b46a572b786",
+        "description": "Modern diverse professionals in an open office setting. Use for 'Employer' CTA section."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4",
+        "description": "Group of people collaborating at a wooden table. Use for 'About Us' or 'Culture' blocks."
+      }
+    ],
+    "testimonials": [
+      {
+        "url": "https://images.pexels.com/photos/31869537/pexels-photo-31869537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "name": "Sarah Jenkins",
+        "role": "Product Manager at TechFlow"
+      },
+      {
+        "url": "https://images.pexels.com/photos/26872232/pexels-photo-26872232.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "name": "David Chen",
+        "role": "Senior Engineer"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDR8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc4MzQxOTk1NXww&ixlib=rb-4.1.0&q=85",
+        "name": "Marcus Johnson",
+        "role": "UX Designer"
+      }
+    ]
+  },
+  "accessibility_and_interactions": {
+    "focus_states": "All interactive elements must have focus:ring-2 focus:ring-orange-600/50 focus:outline-none.",
+    "hover_states": "Cards lift (-translate-y-1). Buttons shift color slightly. Links use underline-offset-4.",
+    "data_testids": "MANDATORY on all buttons, links, form inputs, menus, and key information points (e.g., data-testid='apply-job-button')."
+  },
+  "tech_stack_rules": {
+    "file_type": "Use .js and .jsx files (not .tsx).",
+    "ui_library": "Use Shadcn/UI for complex interactive components (Dialog, Tabs, Select). Use pure HTML/Tailwind for layouts and cards where Shadcn feels too rigid."
+  },
+  "instructions_to_main_agent": [
+    "Use standard Tailwind CSS classes. No custom CSS unless strictly required for dot grid backgrounds (e.g., `bg-[radial-gradient(#e5e7eb_1px,transparent_1px)]`).",
+    "Ensure 'Outfit' font is loaded from Google Fonts for headings, and 'IBM Plex Sans' for body.",
+    "For the AI Resume Analyzer, implement a 'Tracing Beam' effect using Framer Motion or simple CSS animations for the dropzone border, and highlight the 'Score' in the emerald-600 accent color.",
+    "Implement the Header with Glassmorphism (bg-white/70 backdrop-blur-xl).",
+    "Replace dummy names with media testimonials provided in the JSON. Never use placeholder services.",
+    "Never use generic purple gradients. Stick strictly to the monochrome + Orange/Emerald palette for 'SaaS precision + Job Portal Warmth'.",
+    "Data test IDs must be kebab-case and role-based."
+  ]
+}
