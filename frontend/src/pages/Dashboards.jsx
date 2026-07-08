@@ -110,7 +110,7 @@ export function EmployerDashboard() {
     if (!user) { nav("/login"); return; }
     if (user.role !== "employer") { nav("/dashboard/seeker"); return; }
     load();
-  }, [user]);
+  }, [user, nav]);
 
   const viewApplicants = async (job) => {
     setApplicantsFor(job);
