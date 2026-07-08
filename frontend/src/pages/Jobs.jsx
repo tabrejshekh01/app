@@ -34,7 +34,7 @@ export default function Jobs() {
 
   useEffect(() => {
     fetchJobs();
-  }, [page]);
+  }, [page, fetchJobs]);
 
   const applyFilters = (e) => {
     e?.preventDefault();
