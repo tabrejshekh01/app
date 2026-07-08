@@ -26,7 +26,7 @@ export function SeekerDashboard() {
     if (!user) { nav("/login"); return; }
     if (user.role !== "seeker") { nav("/dashboard/employer"); return; }
     api.get("/my/applications").then((r) => setApps(r.data)).finally(() => setLoading(false));
-  }, [user]);
+  }, [user, nav]);
 
   if (!user) return null;
 
